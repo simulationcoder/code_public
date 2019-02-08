@@ -9,15 +9,16 @@ import psutil
 import urllib.request
 import time
 
+#Change YourKEYGoesHere with your personal key from IFTTT
 def main():
     battery = psutil.sensors_battery()
     #plugged = battery.power_plugged
     percent_integer = battery.percent
     if percent_integer<=20:
-        urllib.request.urlopen("https://maker.ifttt.com/trigger/battery_low/with/key/craFL-nrm4QmsmP8AotPOz").read()
+        urllib.request.urlopen("https://maker.ifttt.com/trigger/battery_low/with/key/YourKEYGoesHere").read()
         print('Battery:{}%; Battery Low. Charging activated. Sleeping for the next 30 mins'.format(str(percent_integer)))
     elif percent_integer>=90:
-        urllib.request.urlopen("https://maker.ifttt.com/trigger/battery_full/with/key/craFL-nrm4QmsmP8AotPOz").read()
+        urllib.request.urlopen("https://maker.ifttt.com/trigger/battery_full/with/key/YourKEYGoesHere").read()
         print('Battery:{}%; Charging de-activated. Sleeping for the next 30 mins'.format(str(percent_integer)))
     else:
         print('Battery:{}%; No action to take. Sleeping for the next 30 mins'.format(str(percent_integer)))
